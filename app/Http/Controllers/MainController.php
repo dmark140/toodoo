@@ -33,10 +33,10 @@ class MainController extends Controller
 
         $getNOtes = DB::table('titles')
                 ->leftJoin('notes', 'titles.uuid', '=', 'notes.title_id')
-                ->select('titles.title' ,'titles.created_at' ,'notes.created_at as Notecreated_at' , 'titles.uuid  as titleUuid','notes.uuid as noteUUID' ,'notes.note','notes.completed')
+                ->select('titles.title' ,'notes.completed','titles.created_at' ,'notes.created_at as Notecreated_at' , 'titles.uuid  as titleUuid','notes.uuid as noteUUID' ,'notes.note','notes.completed')
                 ->orderBy('titles.created_at','desc')
                 ->get();
-                dump($getNOtes);
+                // dump($getNOtes);
         return view("welcome",
             [
                 // 'data'=> Titles::orderBy('created_at','desc')->get(),

@@ -14,7 +14,7 @@
     <!-- Styles -->
 </head>
 
-<body class="antialiased">
+<body class="antialiased   ">
     <div class="mx-auto w-[480px]  ">
         <div class="text-4xl font-bold">To-dos</div>
         @include('createTitleSuccess')
@@ -27,45 +27,19 @@
             @foreach ($data as $e)
                 @if ($loop->index - 1 != -1)
                     @if ($data[$loop->index - 1]->titleUuid != $data[$loop->index]->titleUuid)
-                        <tr>
-                            <td class="  min-w-[50px]">&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td class="  min-w-[50px]"></td>
-                            <td class=" px-4 w-full font-semibold">{{ $e->title }}</td>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="  min-w-[50px]"></td>
-                            <td class=" px-4 w-full font-semibold"> @include('createNote', ['id' => $e->titleUuid]) </td>
-                            </td>
-                        </tr>
+                        @include('titleContainer', ['title' => $e->title, 'titleUuid' => $e->titleUuid])
                     @endif
                 @else
-                    <tr>
-                        <td class="  min-w-[50px]">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td class="  min-w-[50px]"></td>
-                        <td class=" px-4 w-full font-semibold">{{ $e->title }}</td>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="  min-w-[50px]"></td>
-                        <td class=" px-4 w-full font-semibold"> @include('createNote', ['id' => $e->titleUuid]) </td>
-                        </td>
-                    </tr>
+                    @include('titleContainer', ['title' => $e->title, 'titleUuid' => $e->titleUuid])
                 @endif
 
                 @if ($e->note != '')
-                    <tr>
-                        <td class="border-y border-r min-w-[50px]">
-                            <input type="checkbox" class="mt-1 mx-4" />
-                        </td>
-                        <td class="border-y pl-8 w-full">{{ $e->note }} <div class="float-right">
-                                {{ $e->Notecreated_at }}</div>
-                        </td>
-                    </tr>
+                    @include('deleteOrUpdateNote', [
+                        'id' => $e->noteUUID,
+                        'title' => $e->noteUUID,
+                        'note' => $e->note,
+                        'completed' => $e->completed,
+                    ])
                 @endif
             @endforeach
 
@@ -77,6 +51,8 @@
             </tr> --}}
 
         </table>
+
+        @include('gitHub')
     </div>
 </body>
 

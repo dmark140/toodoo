@@ -1,6 +1,6 @@
 <tr>
     <td class="border-y  min-w-[50px]  " colspan="2">
-        <form action="{{ route('title.create') }}" method="post" class="flex min-w-[480]">
+        <form action="{{ route('title.create') }}" method="post" class="flex min-w-[480] p-0 m-0">
             @csrf
             <input class="form-control w-full active:border-none border-none  px-2" placeholder="enter a title here"
                 id="title" name ="title" />
@@ -8,7 +8,7 @@
         </form>
     </td>
     @error('title')
-        <span class="text-red-300 text-sm">{{ $message }}</span>
+        <span class="text-red-300 ">{{ $message }}</span>
     @enderror
 </tr>
 

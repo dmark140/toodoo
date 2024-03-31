@@ -1,8 +1,7 @@
 @if (session()->has('2'))
-    <div id="createTitleError" class="text-sm flex items-center p-2 px-4 my-4 text-red-500 rounded-lg bg-red-50 "
-        role="alert">
+    <div id="createTitleError" class=" flex items-center p-2 px-4 my-4 text-red-500 rounded-lg bg-red-50 " role="alert">
         <span class="sr-only">Info</span>
-        <div class="ms-3 text-sm font-medium">
+        <div class="ms-3  font-medium">
             Title Added
         </div>
         <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-blue-50 text-red-500 rounded-lg "
